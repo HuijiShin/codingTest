@@ -1,0 +1,36 @@
+/*
+2021-04-20
+<HashMap>
+1. getOrDefault() -> 찾는 키가 존재하면 해당 키의 값을 반환하고, 없으면 기본값을 반환함.
+2. containsKey() -> 찾는 키가 존재하면 true, 없으면 false 반환함.
+3. map.keySet() -> 모든 key가져오기
+
+<배열>
+1. arr.splice(i, 1) -> 배열에서 특정값 제거
+2. ArrayList<String> test = new ArrayList<String>(Arrays.asList(participant)); -> 배열을 리스트로
+*/
+
+import java.util.*;
+
+public class Solution {
+    public String solution(String[] participant, String[] completion) {
+    
+        String answer = "";
+        HashMap<String, Integer> map = new HashMap<>();
+        for (String player : participant) {
+            map.put(player, map.getOrDefault(player, 0) +1);
+        }
+
+        for (String player : completion) {
+            map.put(player, map.get(player) -1);
+        }
+
+        for (String key : map.keySet()) {
+            if (map.get(key) != 0) {
+                answer = key;
+            }
+        }
+    
+        return answer;
+    }
+}
