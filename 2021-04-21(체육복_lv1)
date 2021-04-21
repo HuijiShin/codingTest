@@ -1,0 +1,39 @@
+import java.util.*;
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int have = 0; // 도난 당했지만 여분이 있는 학생 수
+        int count = 0;
+        int answer = 0;
+        
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                if (lost[i] == reserve[j]) {
+                    have ++;
+                    lost[i] = -1; 
+                    reserve[j] = -1;
+                    break;
+                }
+            }
+        }
+        
+        for (int i = 0; i < lost.length; i++) {
+            for (int j = 0; j < reserve.length; j++) {
+                int min = lost[i] -1;
+                int max = lost[i] +1;
+                
+                if (min == reserve[j] || max == reserve[j]) {
+                    count ++;
+                    reserve[j] = -1;
+                    break;
+                }
+            }
+        }
+            
+        // 전체 학생수 - 잃어버린 학생 수
+        // + 잃어버렸지만 가지고 있는 학생 수 + 빌려줘서 수업을 들을 수 있는 학생 수
+        answer = n - lost.length + have + count;
+        
+        return answer;
+    }
+}
