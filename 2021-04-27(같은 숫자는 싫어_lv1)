@@ -1,0 +1,15 @@
+def solution(arr):
+    answer = []
+    beforeValue = arr[0]
+    
+    # 첫번째 값 answer에 넣어주기
+    answer.append(beforeValue)
+    
+    for i in range(len(arr)):
+        if arr[i] != beforeValue: 
+            answer.append(arr[i])
+            beforeValue = arr[i]
+        else: 
+            continue
+            
+    return answer
