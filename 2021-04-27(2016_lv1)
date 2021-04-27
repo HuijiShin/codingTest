@@ -1,0 +1,15 @@
+#datetime 사용하기
+#date형으로 변환후, weekday()함수 사용
+#weekday() ->  {0:월, 1:화, 2:수, 3:목, 4:금, 5:토, 6:일}
+
+import datetime as dt
+
+def solution(a, b):
+    #2016.01.01 금요일
+    #2016 a월b일은?
+    
+    days = ['MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT', 'SUN']
+    year = 2016
+    answer = days[dt.date(year, a, b).weekday()]
+    
+    return answer
